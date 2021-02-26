@@ -5,7 +5,7 @@
                 <q-btn flat dense round icon="menu" aria-label="Menu" @click="leftDrawerOpen = !leftDrawerOpen" />
 
                 <q-toolbar-title>
-                    Uniq Builder Documentation
+                    Bitcapp Builder Documentation
                 </q-toolbar-title>
 
                 <div><b>v1.0</b></div>
