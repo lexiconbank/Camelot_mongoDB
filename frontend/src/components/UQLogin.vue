@@ -14,7 +14,7 @@
 		       		<div><q-input v-model="form_data.password" type="password" placeholder="Enter Password" outlined dense></q-input></div>
 		       </div>
 		       <div class="q-mt-lg"><q-btn type="submit" color="primary" unelevated class="full-width">Login</q-btn></div>
-		       <div class="q-mt-sm"><q-btn type="button" v-close-popup color="primary" outline class="full-width">Cancel</q-btn></div>
+		       <div class="q-mt-sm"><q-btn type="button" color="primary" outline class="full-width">Cancel</q-btn></div>
 	   		</q-form>
 	    </div>
     </div>
@@ -31,18 +31,25 @@ export default
         {
             email: '',
             password: '',
+            user_name: 'snake_snake',
+            gender_options:'',
+            is_empty: '',
+
         },
     }),
     mounted()
     {
         
     },
+
     methods:
     {
-        async findUser()
+        async findUser() // camelCase
         {
             this.$q.loading.show();
-            let login = await this.$_post(postLoginUser, this.form_data);
+
+            let login = await this.$_post(postLoginUser, this.form_data); //request
+
             if(login)
             {
                 this.$q.dialog({ title: `Success Message`, message: "Login Successful" });

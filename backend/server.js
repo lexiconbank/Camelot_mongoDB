@@ -15,6 +15,6 @@ app.listen({port: 4000}, (err) => {
         console.log(err);
         process.exit(1);
     }else {
-        console.log('Cryptolab server is running on port 4000...');
+        console.log('Camelot server is running on port 4000...');
     }
 });
