@@ -17,13 +17,37 @@ module.exports =
             { label: 'Web3', route: 'documentation_web3' },
         ]
     },
-    // {
-    //     key: 'user',
-    //     label: 'User',
-    //     icon: 'fa fa-user',
-    //     sub:
-    //     [
-    //         { label: 'Wallet', route: 'documentation_login' },
-    //     ]
-    // },
+    {
+        key: 'documentation',
+        label: 'Documentation',
+        icon: 'fa fa-home',
+        sub:
+        [
+
+        ]
+    },
+    {
+        key: 'member',
+        label: 'Member',
+        icon: 'fa fa-home',
+        sub:
+        [
+            
+        ]
+    },
+    {
+        key: 'admin',
+        label: 'Admin',
+        icon: 'fa fa-home',
+        sub:
+        [
+            
+        ]
+    },
+    {
+        key: 'coding_standards',
+        label: 'Coding Standards',
+        icon: 'fa fa-question',
+        route: 'documentation_guide',
+    },
 ]

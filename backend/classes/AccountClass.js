@@ -9,7 +9,7 @@ module.exports = class AccountClass
     }
 
     async validate()
-    {
+    { 
         let res = {};
         if(this.user_information.full_name.trim() == '' || this.user_information.password.trim() == '' || this.user_information.email.trim() == '')
         {
@@ -39,6 +39,7 @@ module.exports = class AccountClass
                 email: this.user_information.email,
                 password: this.user_information.password
             }
+
             let user = await this.mdb_user.findByUsernameAndPassword(user_data);
 
             if(user)
@@ -56,6 +57,7 @@ module.exports = class AccountClass
             res.status = "error",
             res.message = error.message;
         }
+
         return res;
     }
 
@@ -84,3 +86,5 @@ module.exports = class AccountClass
         return res;
     }
 }
+
+

@@ -6,3 +6,5 @@ exports.postRegistrationUser    = 'front/registration'
 exports.postListUsers           = 'admin/users/list'
 exports.postAddUser             = 'admin/users/add'
 exports.postAddEdit             = 'admin/users/edit'
+
+

@@ -57,6 +57,10 @@ export default
         {
             email: '',
             password: '',
+            user_name: 'snake_snake',
+            gender_options:'',
+            is_empty: '',
+
         },
         isPwd : true,
     }),
@@ -64,12 +68,15 @@ export default
     {
         
     },
+
     methods:
     {
         async loginUser()
         {
             this.$q.loading.show();
-            let login = await this.$_post(postLoginUser, this.form_data);
+
+            let login = await this.$_post(postLoginUser, this.form_data); //request
+
             if(login)
             {
                 this.$q.dialog({ title: `Success Message`, message: "Login Successful" });

@@ -17,6 +17,7 @@ const routes =
             { name: 'documentation_landing', path: '', component: () => import('pages/Documentation/Landing.vue') },
             { name: 'documentation_login', path: 'login', component: () => import('pages/Documentation/Login.vue') },
             { name: 'documentation_registration', path: 'registration', component: () => import('pages/Documentation/Registration.vue') },
+            { name: 'documentation_guide', path: 'guide', component: () => import('pages/Guide/CodingStandards.vue') },
         ]
     },
     // Always leave this as last one,
