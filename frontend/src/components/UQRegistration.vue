@@ -1,6 +1,5 @@
 <template>
     <div>
-
 	    <!-- content -->
 	    <div class='content text-left'>
 	    	<q-form @submit="registerUser()">
@@ -60,7 +59,7 @@
                     </label>
                 </div>
                 <div class="q-mt-sm"><q-btn type="submit" color="primary" unelevated class="full-width">Create Account</q-btn></div>
-                <div class="q-mt-xs"><q-btn type="button" color="primary"  outline class="full-width">Back</q-btn></div>
+                <div class="q-mt-xs"><q-btn type="button" color="primary"  outline class="full-width" @click="$router.push({name: 'front_landing'})">Back</q-btn></div>
 	   		</q-form>
 	    </div>
     </div>
@@ -81,7 +80,7 @@ export default
             confirm_password: '',
         },
         isAgree: false,
-        isPwd: false,
+        isPwd: true,
     }),
     mounted()
     {

@@ -37,7 +37,7 @@
                       <div>Forgot password?</div>
                     </a>
                     <q-btn type="submit" color="primary" unelevated class="full-width q-mt-xs">Login</q-btn>
-                    <a  href="" tabindex="0" class="my__hover q-mt-sm q-btn inline full-width q-btn-item non-selectable q-btn--flat q-btn--rectangle text-black q-focusable q-hoverable q-btn--no-uppercase">
+                    <a  href="#/Register" tabindex="0" class="my__hover q-mt-sm q-btn inline full-width q-btn-item non-selectable q-btn--flat q-btn--rectangle text-black q-focusable q-hoverable q-btn--no-uppercase">
                        <div>Create an account</div>
                     </a>
                  </div>

@@ -2,7 +2,6 @@
 
 
 //url from google fonts
-@import url('https://fonts.gstatic.com');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
 
 html, body {
@@ -11,4 +10,15 @@ html, body {
 
 #app {
     font-family: 'Poppins', sans-serif;
+}
+
+h1{
+    font-size: 42px;
+    line-height: 42px;
+}
+
+h6{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 18px;
 }

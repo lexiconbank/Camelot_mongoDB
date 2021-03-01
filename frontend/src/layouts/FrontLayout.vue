@@ -1,40 +1,34 @@
 <template>
-    <q-layout class="main q-px-xl" view="hHh Lpr lFf">
-        <q-header class="text-h5 bg-white text-black">
-            <div class="q-px-xl q-pt-md">
-                <!-- <q-toolbar class="bg-white text-black shadow-2"> -->
-                  <!-- <q-btn @click="$router.push({name: 'front_dashboard'})" flat no-caps label="CrowdCoin" /> -->
-                  <!-- <q-space /> -->
-
-                  <!--
-                    notice shrink property since we are placing it
-                    as child of QToolbar
-                  -->
-                  <!-- <q-tabs v-model="tab" shrink>
-                    <q-tab @click="$router.push({name: 'front_dashboard'})" name="campaigns" no-caps label="Campaigns" />
-                    <q-tab @click="$router.push({name: 'new_campaign'})" name="plus" icon="add" />
-                  </q-tabs> -->
-                  <!-- <q-btn-toggle
-                    @click="$router.push({name: route_name})"
-                    v-model="route_name"
-                    flat stretch
-                    toggle-color="black"
-                    :options="[
-                      {label: 'Campaigns', value: 'front_dashboard'},
-                      {icon: 'add', value: 'new_campaign'},
-                    ]"
-                  /> -->
-                <!-- </q-toolbar> -->
-            </div>
-        </q-header>
-        <q-page-container>
-            <router-view />
-        </q-page-container>
+    <q-layout class="main" view="hHh lpr fFf">
+       <div class="row">
+      <div class="col-md-7 col-0 gt-sm paddin__left">
+        <div>
+          <q-img
+            src="https://www.michaelmerin.ml/img/vector2.png"
+            style="height: 150px; max-width: 250px"
+            class="rounded-borders"
+          />
+        </div>
+        <div class="max__width">
+          <h6>When You’re Good at Building your Bussiness or Marketing Career or Both...</h6>
+          <h1>You’ll be blessed in the  long term</h1>
+          <a  href="" tabindex="0" class="my__hover q-btn inline q-btn-item non-selectable q-btn--flat q-btn--rectangle text-black q-focusable q-hoverable q-btn--no-uppercase">
+            <h6><span class="material-icons">keyboard_arrow_right</span>Wait... There’s More!</h6>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-5 col-12">
+        <div class="q-mx-auto q-pt-xl max__width">
+          <q-page-container>
+              <router-view />
+          </q-page-container>
+        </div>
+      </div>
+    </div>
     </q-layout>
 </template>
 <script>
 import EssentialLink    from 'components/EssentialLink.vue'
-import navigation       from '../references/nav'
 
 export default
 {
@@ -48,14 +42,53 @@ export default
 		leftDrawerOpen: false,
 		navigation: [],
         tab: '',
-        route_name: 'front_dashboard'
+        // route_name: 'front_dashboard'
 	}),
     mounted()
     {
-        this.navigation = navigation;
+      // this.navigation = navigation;    
     },
     methods:
     {
     },
 }
 </script>
+
+<style scoped>
+  .row{
+    padding: 100px;
+    height: 100vh;
+    background: #fff;
+  }
+  
+  .paddin__left{
+    padding-left: 10%;
+  }
+  .max__width{
+    max-width:450px;
+  }
+
+  h1{
+    font-weight: 800;
+  }
+
+  .my__hover{
+   transition: all .2s linear;
+  }
+  .my__hover:hover{
+    transform: translateX(10px);
+  }
+
+  @media screen and (max-width: 1023px) {
+    .row{
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  }
+  @media screen and (max-width: 599px) {
+    .row{
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+</style>
