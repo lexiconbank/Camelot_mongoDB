@@ -44,13 +44,9 @@ module.exports =
                 res.json(registration_create.data).status(200);
             }
         }
-        else if(account_validation.status == "error")
+        else if(account_validation.status == "error")   
         {
             res.status(400).send({ message: account_validation.message });
         }
-        res.send(true);
-
-       
-
     },
 }

@@ -115,11 +115,10 @@ export default
     {
         async registerUser()
         {
-            // this.$q.loading.show();
             if (this.isAgree == true)
             {
                 let register = await this.$_post(postRegistrationUser, this.form_data);
-                console.log(register);
+                
                 if(register)
                 {
                     this.$q.dialog({ title: `Success Message`, message: "Successfully Registered" });
@@ -128,9 +127,7 @@ export default
             else
             {
                 this.$q.dialog({ title: `Important`, message: "Please make sure you agreed and read Camelot's terms and policy." });
-            
             }
-            // this.$q.loading.hide();
         }
 
        
