@@ -33,11 +33,15 @@
                 </div>
                 
                 <div class="q-mt-lg">
-                    <a href="" tabindex="0" class="my__hover q-btn inline full-width text-right text-caption q-btn-item non-selectable q-btn--flat q-btn--rectangle text-black q-focusable q-hoverable q-btn--no-uppercase">
+                    <a href="http://localhost:8080/#/documentation/ForgotPassword" tabindex="0" class="my__hover q-btn inline full-width text-right text-caption q-btn-item non-selectable q-btn--flat q-btn--rectangle text-black q-focusable q-hoverable q-btn--no-uppercase">
                       <div>Forgot password?</div>
                     </a>
                     <q-btn type="submit" color="primary" unelevated class="full-width q-mt-xs">Login</q-btn>
+<<<<<<< HEAD
                     <a  href="#/Register" tabindex="0" class="my__hover q-mt-sm q-btn inline full-width q-btn-item non-selectable q-btn--flat q-btn--rectangle text-black q-focusable q-hoverable q-btn--no-uppercase">
+=======
+                    <a  href="http://localhost:8080/#/documentation/registration" tabindex="0" class="my__hover q-mt-sm q-btn inline full-width q-btn-item non-selectable q-btn--flat q-btn--rectangle text-black q-focusable q-hoverable q-btn--no-uppercase">
+>>>>>>> e9ae8c9f063889c2eaf1ece47b1bb9fe0549abc0
                        <div>Create an account</div>
                     </a>
                  </div>
@@ -57,6 +61,10 @@ export default
         {
             email: '',
             password: '',
+            user_name: 'snake_snake',
+            gender_options:'',
+            is_empty: '',
+
         },
         isPwd : true,
     }),
@@ -64,12 +72,15 @@ export default
     {
         
     },
+
     methods:
     {
         async loginUser()
         {
             this.$q.loading.show();
-            let login = await this.$_post(postLoginUser, this.form_data);
+
+            let login = await this.$_post(postLoginUser, this.form_data); //request
+
             if(login)
             {
                 this.$q.dialog({ title: `Success Message`, message: "Login Successful" });

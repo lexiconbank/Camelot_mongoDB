@@ -8,6 +8,7 @@ module.exports =
         let password        = req.body.password;
 
         let authenticate    = await new AccountClass({email:email, password:password}).authenticate();
+        
         if(authenticate.status == "success")
         {
             res.send(true);
@@ -32,6 +33,7 @@ module.exports =
         }
 
         let account_class = new AccountClass(user_information);
+no
         let account_validation = await account_class.validate();
 
         if(account_validation.status == "success")

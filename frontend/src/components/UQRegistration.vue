@@ -25,40 +25,105 @@
                 <div class="field q-mt-xs">
                     <q-input outlined v-model="form_data.contact_number" type="number" label="Contact Number" placeholder="09xx-xxx-xxxx" :rules="[val => !!val || 'Field is required']" dense/>
 		        </div>
-		        <div class="field q-mt-xs">
-                    <q-input outlined v-model="form_data.password" label="Password" dense :type="isPwd ? 'password' : 'text'" :rules="[
-                        val => !!val || 'Field is required',
-                        val => val.length >= 8 || 'Password must be 8 characters.',
-                        val => /[a-z]/.test(val) && /\d/.test(val) && /[A-Z]/.test(val) || 'Must include uppercase letter and a number.',
-                    ]">
+		        <!-- <div class="field q-mt-md">
+                    <q-input outlined v-model="form_data.password" label="Password" dense :type="isPwd ? 'text' : 'password'">
                         <template v-slot:append>
                             <q-icon
-                                :name="isPwd ? 'visibility_off' : 'visibility'"
+                                :name="isPwd ? 'visibility' : 'visibility_off'"
                                 class="cursor-pointer"
                                 @click="isPwd = !isPwd"
                             />
                         </template>
                     </q-input>
                 </div>
-		        <div class="field q-mt-xs">
-                    <q-input outlined v-model="form_data.confirm_password" label="Confirm Password" dense :type="iscPwd ? 'password' : 'text'" :rules="[
-                      val => !!val || 'Field is required',
-                      val => val == form_data.password || 'Password is not the same',
-                    ]">
+                 <div class="field q-mt-md">
+                    <q-input outlined v-model="form_data.confirm_password" label="Confirm Password" dense :type="isPwd ? 'text' : 'password'">
                         <template v-slot:append>
                             <q-icon
-                                :name="iscPwd ? 'visibility_off' : 'visibility'"
+                                :name="isPwd ? 'visibility' : 'visibility_off'"
                                 class="cursor-pointer"
-                                @click="iscPwd = !iscPwd"
+                                @click="isPwd = !isPwd"
                             />
                         </template>
                     </q-input>
-                </div>
-                <div class="field q-mt-xs">
-                    <q-input outlined v-model="form_data.country" label="Country" dense :rules="[val => !!val || 'Field is required']"/>
+                </div> -->
+
+                 <!-- Password -->
+                <div class="field q-mt-md">
+                    <div>
+                        <q-input  
+                            :bg-color="!$q.dark.isActive? 'white':'grey-7'"  
+                            :color="!$q.dark.isActive? 'blue-grey-14':'white'"
+                            @input="password_validations" 
+                            v-model="form_data.password" 
+                            :type="isPwd ? 'text' : 'password'" 
+                            label="Password" 
+                            outlined  
+                            :rules="[
+                            val => !!val || '* Field is required',
+                            val => val.length >= 8 || 'Password must be 8 characters.',
+                            val => /[a-z]/.test(val) && /\d/.test(val) && /[A-Z]/.test(val) || 'Must have Uppercase & Number',
+                            ]"
+                        >
+                            <template v-slot:append>
+                              <q-icon
+                                :name="isPwd ? 'visibility' : 'visibility_off'"
+                                class="cursor-pointer"
+                                @click="isPwd = !isPwd"
+                              />
+                            </template>
+                        </q-input>
+                        <div :class="this.form_data.password.length < 8 ? 'text-center' : 'text-center'" v-if="typed">
+                            <div v-if="is_weak == true" class="lnu_container_weak">
+                               
+                            </div>
+                            <transition name="fade">
+                                <div v-if="is_strong" class="lnu_container_strong">
+                                    
+                                </div>
+                            </transition>
+                            <transition name="fade">
+                                <div v-if="is_very_strong" class="lnu_container_very_strong">
+                                    
+                                </div>
+                            </transition>
+                        </div>
+                    </div>
+               </div>
+               <!-- Password -->
+
+               <!-- Confirm Password -->
+               <div class="field q-mt-md">
+                    <div>
+                        <q-input  
+                            :bg-color="!$q.dark.isActive? 'white':'grey-7'"  
+                            :color="!$q.dark.isActive? 'blue-grey-14':'white'"
+                            v-model="form_data.confirm_password" 
+                            :type="isConfirmPwd ? 'text' : 'password'" 
+                            label="Confirm Password" 
+                            outlined
+                            :rules="[
+                            val => !!val || '* Field is required',
+                            val => val == this.form_data.password || 'Password did not match'
+                            ]"
+                        >
+                            <template v-slot:append>
+                              <q-icon
+                                :name="isConfirmPwd ? 'visibility' : 'visibility_off'"
+                                class="cursor-pointer"
+                                @click="isConfirmPwd = !isConfirmPwd"
+                              />
+                            </template>
+                        </q-input>
+                    </div>
+               </div>
+               <!-- Confirm Password -->
+                <div class="field q-mt-md">
+                    <q-input outlined v-model="form_data.country" label="Country" dense/>
 		        </div>
-                <div class="field q-mt-xs">
-                    <q-input outlined v-model="form_data.currency" label="Currency" dense :rules="[val => !!val || 'Field is required']"/>
+                
+                <div class="field q-mt-md">
+                    <q-input outlined v-model="form_data.currency" label="Currency" dense/>
 		        </div>
                 <div class="field q-mt-lg">
                     <q-input outlined v-model="form_data.referral_code" label="Referral Code" hint="Example: KRPT01" dense :rules="[val => !!val || 'Field is required']"/>
@@ -80,7 +145,10 @@
                     </label>
                 </div>
                 <div class="q-mt-sm"><q-btn type="submit" color="primary" unelevated class="full-width">Create Account</q-btn></div>
-                <div class="q-mt-xs"><q-btn type="button" color="primary"  outline class="full-width" @click="$router.push({name: 'front_landing'})">Back</q-btn></div>
+                <!-- <div class="q-mt-xs"><q-btn type="button" color="primary"  outline class="full-width">Back</q-btn></div> -->
+                 <a  href="http://localhost:8080/#/documentation/" tabindex="0" class="my__hover q-mt-sm q-btn inline full-width q-btn-item non-selectable q-btn--flat q-btn--rectangle text-black q-focusable q-hoverable q-btn--no-uppercase">
+                       <div>Back</div>
+                    </a>
 	   		</q-form>
 	    </div>
     </div>

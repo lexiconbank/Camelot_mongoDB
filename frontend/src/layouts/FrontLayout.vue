@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <q-layout class="main" view="hHh lpr fFf">
        <div class="row">
       <div class="col-md-7 col-0 gt-sm paddin__left">
@@ -25,6 +26,17 @@
         </div>
       </div>
     </div>
+=======
+    <q-layout class="main q-px-xl" view="hHh Lpr lFf">
+        <q-header class="text-h5 bg-white text-black">
+            <div class="q-px-xl q-pt-md">
+              
+            </div>
+        </q-header>
+        <q-page-container>
+            <router-view />
+        </q-page-container>
+>>>>>>> e9ae8c9f063889c2eaf1ece47b1bb9fe0549abc0
     </q-layout>
 </template>
 <script>

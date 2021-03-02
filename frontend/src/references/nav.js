@@ -15,15 +15,40 @@ module.exports =
             { label: 'Login', route: 'documentation_login' },
             { label: 'Registration', route: 'documentation_registration' },
             { label: 'Web3', route: 'documentation_web3' },
+            { label: 'Forgot Password', route: 'documentation_forgotpassword' },
         ]
     },
-    // {
-    //     key: 'user',
-    //     label: 'User',
-    //     icon: 'fa fa-user',
-    //     sub:
-    //     [
-    //         { label: 'Wallet', route: 'documentation_login' },
-    //     ]
-    // },
+    {
+        key: 'documentation',
+        label: 'Documentation',
+        icon: 'fa fa-home',
+        sub:
+        [
+
+        ]
+    },
+    {
+        key: 'member',
+        label: 'Member',
+        icon: 'fa fa-home',
+        sub:
+        [
+            
+        ]
+    },
+    {
+        key: 'admin',
+        label: 'Admin',
+        icon: 'fa fa-home',
+        sub:
+        [
+            
+        ]
+    },
+    {
+        key: 'coding_standards',
+        label: 'Coding Standards',
+        icon: 'fa fa-question',
+        route: 'documentation_guide',
+    },
 ]
