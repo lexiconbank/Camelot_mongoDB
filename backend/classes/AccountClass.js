@@ -1,4 +1,6 @@
 const MDB_USER = require('../models/MDB_USER');
+const User  = require('../models/MDB_USER').User;
+const axios  = require('axios');
 
 module.exports = class AccountClass
 {
@@ -27,6 +29,37 @@ module.exports = class AccountClass
         }
 
         return res;
+    }
+
+    static async validateUserRegistration(full_name, email, contact_number, password, confirm_password)
+    {
+        let result = {
+            is_success   : true
+        }
+
+        let mdb_user    = new MDB_USER();
+        email           = await mdb_user.findByEmail(email);
+        username       = await mdb_user.findByUsername(username);
+
+        if(username != null)
+        {
+            result.is_success   = false;
+            result.error        = 'username is already in use';
+            return result;
+        }else
+        if(email != null)
+        {
+            result.is_success   = false;
+            result.error        = 'email is already in use.';
+            return result;
+        }else
+        if(password != confirm_password)
+        {
+            result.is_success   = false;
+            result.error        = 'password not match';
+            return result;
+        }
+        return result;
     }
 
     async authenticate()
