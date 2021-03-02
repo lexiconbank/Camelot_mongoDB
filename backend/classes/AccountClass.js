@@ -11,21 +11,16 @@ module.exports = class AccountClass
     async validate()
     {
         let res = {};
-        if(this.user_information.full_name.trim() == '' || this.user_information.password.trim() == '' || this.user_information.email.trim() == '')
+        if(this.user_information.full_name.trim() == '' || this.user_information.email.trim() == '' || this.user_information.contact_number.trim() == '' || this.user_information.password.trim() == '' || this.user_information.country.trim() == '' || this.user_information.referral_code.trim() == '' )
         {
             res.status      = "error";
             res.message     = "You need to fill up all fields in order to proceed.";
         }
-        else if(this.user_information.confirm_password !== this.user_information.password)
-        {
-            res.status      = "error";
-            res.message     = "The password you entered didn't match.";
-        }
         else
         {
             res.status = "success";
+            res.message     = "Congratulation!";
         }
-
         return res;
     }
 
@@ -70,10 +65,14 @@ module.exports = class AccountClass
             { 
                 full_name: this.user_information.full_name,
                 email: this.user_information.email,
-                password: this.user_information.password
+                contact_number: this.user_information.contact_number,
+                password: this.user_information.password,
+                country: this.user_information.country,
+                referral_code: this.user_information.referral_code
             }
 
-            await this.mdb_user.add(add_form);
+            let registration_create = await this.mdb_user.add(add_form);
+            res.data = registration_create;
         }
         catch (error)
         {
@@ -83,4 +82,6 @@ module.exports = class AccountClass
 
         return res;
     }
+
+    
 }

@@ -14,16 +14,23 @@
                     </div>
                 </div>
 		     	<div class="field q-mt-lg">
-                    <q-input outlined v-model="form_data.full_name" label="Full Name" dense/>
+                    <q-input outlined v-model="form_data.full_name" label="Full Name" :rules="[val => !!val || 'Field is required']" dense/>
                 </div>
-                <div class="field q-mt-md">
-                    <q-input outlined v-model="form_data.email" label="Email" dense/>
+                <div class="field q-mt-xs">
+                    <q-input outlined v-model="form_data.email" label="Email" :rules="[
+                        val => !!val || 'Field is required',
+                        val => /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/.test(val) || 'Invalid Email.',
+                    ]" dense/>
 		        </div>
-                <div class="field q-mt-md">
-                    <q-input outlined v-model="form_data.contact_number" label="Contact Number" placeholder="09xx-xxx-xxxx" dense/>
+                <div class="field q-mt-xs">
+                    <q-input outlined v-model="form_data.contact_number" type="number" label="Contact Number" placeholder="09xx-xxx-xxxx" :rules="[val => !!val || 'Field is required']" dense/>
 		        </div>
-		        <div class="field q-mt-md">
-                    <q-input outlined v-model="form_data.password" label="Password" dense :type="isPwd ? 'password' : 'text'">
+		        <div class="field q-mt-xs">
+                    <q-input outlined v-model="form_data.password" label="Password" dense :type="isPwd ? 'password' : 'text'" :rules="[
+                        val => !!val || 'Field is required',
+                        val => val.length >= 8 || 'Password must be 8 characters.',
+                        val => /[a-z]/.test(val) && /\d/.test(val) && /[A-Z]/.test(val) || 'Must include uppercase letter and a number.',
+                    ]">
                         <template v-slot:append>
                             <q-icon
                                 :name="isPwd ? 'visibility_off' : 'visibility'"
@@ -33,17 +40,31 @@
                         </template>
                     </q-input>
                 </div>
-                <div class="field q-mt-md">
-                    <q-input outlined v-model="form_data.country" label="Country" dense/>
+		        <div class="field q-mt-xs">
+                    <q-input outlined v-model="form_data.confirm_password" label="Confirm Password" dense :type="iscPwd ? 'password' : 'text'" :rules="[
+                      val => !!val || 'Field is required',
+                      val => val == form_data.password || 'Password is not the same',
+                    ]">
+                        <template v-slot:append>
+                            <q-icon
+                                :name="iscPwd ? 'visibility_off' : 'visibility'"
+                                class="cursor-pointer"
+                                @click="iscPwd = !iscPwd"
+                            />
+                        </template>
+                    </q-input>
+                </div>
+                <div class="field q-mt-xs">
+                    <q-input outlined v-model="form_data.country" label="Country" dense :rules="[val => !!val || 'Field is required']"/>
 		        </div>
-                <div class="field q-mt-md">
-                    <q-input outlined v-model="form_data.currency" label="Currency" dense/>
+                <div class="field q-mt-xs">
+                    <q-input outlined v-model="form_data.currency" label="Currency" dense :rules="[val => !!val || 'Field is required']"/>
 		        </div>
-                <div class="field q-mt-xl">
-                    <q-input outlined v-model="form_data.referra_code" label="Referral Code" hint="Example: KRPT01" dense/>
+                <div class="field q-mt-lg">
+                    <q-input outlined v-model="form_data.referral_code" label="Referral Code" hint="Example: KRPT01" dense :rules="[val => !!val || 'Field is required']"/>
 		        </div>
                 <div class="q-mt-lg">
-                    <q-checkbox v-model="isAgree" color="accent" ></q-checkbox>
+                    <q-checkbox v-model="isAgree" color="accent" :rules="[val => !!val || 'Field is required']"></q-checkbox>
                     <label>I agree to Camelot's 
                         <a
                             href=""
@@ -76,11 +97,15 @@ export default
         {
             full_name: '',
             email: '',
+            contact_number: '',
             password: '',
-            confirm_password: '',
+            country: '',
+            referral_code: '',
         },
+        confirm_password: '',
         isAgree: false,
         isPwd: true,
+        iscPwd: true
     }),
     mounted()
     {
@@ -90,14 +115,25 @@ export default
     {
         async registerUser()
         {
-            this.$q.loading.show();
-            let register = this.$_post(postRegistrationUser, this.form_data);
-            if(register)
+            // this.$q.loading.show();
+            if (this.isAgree == true)
             {
-                this.$q.dialog({ title: `Success Message`, message: "Successfully Registered" });
+                let register = await this.$_post(postRegistrationUser, this.form_data);
+                console.log(register);
+                if(register)
+                {
+                    this.$q.dialog({ title: `Success Message`, message: "Successfully Registered" });
+                }
             }
-            this.$q.loading.hide();
+            else
+            {
+                this.$q.dialog({ title: `Important`, message: "Please make sure you agreed and read Camelot's terms and policy." });
+            
+            }
+            // this.$q.loading.hide();
         }
+
+       
     }
 }
 </script>

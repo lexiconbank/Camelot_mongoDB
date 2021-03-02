@@ -13,7 +13,22 @@ const schema    = new Schema({
         type:       String,
         required:   true
     },
+    contact_number: 
+    {
+        type:       String,
+        required:   true
+    },
     password: 
+    {
+        type:       String,
+        required:   true
+    },
+    country: 
+    {
+        type:       String,
+        required:   true
+    },
+    referral_code: 
     {
         type:       String,
         required:   true
