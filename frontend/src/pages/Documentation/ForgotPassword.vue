@@ -3,7 +3,7 @@
 
 <!-- markdown -->
 <q-markdown >
-Registration Form
+Forgot Password
 ===
 
 </q-markdown>
@@ -11,14 +11,14 @@ Registration Form
 
 <div class="component q-ma-lg">
     <div class="form-container">
-        <u-q-registration></u-q-registration>
+        <u-q-forgotpassword></u-q-forgotpassword>
     </div>
 </div>
 
 <!-- markdown -->
 <q-markdown >
 
-The __code below__ is for `Registration Form`
+The __code below__ is for `Forgot Password`
 
 ``` html
 {{ code }}
@@ -32,7 +32,7 @@ The __code below__ is for `Registration Form`
 </template>
 
 <script>
-import UQRegistration from '../../components/UQRegistration'
+import UQForgotpassword from '../../components/UQForgotPassword'
 
 export default
 {
@@ -40,15 +40,16 @@ export default
     ({
         code: `<div class="component q-ma-lg">
     <div class="form-container">
-        <u-q-registration></u-q-registration>
+        <u-q-forgotpassword></u-q-forgotpassword>
     </div>
 </div>`
     }),
-    components: { UQRegistration },
+    components: { UQForgotpassword },
     mounted()
     {
     },
     methods: { },
 }
 </script>
+
 

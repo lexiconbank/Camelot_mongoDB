@@ -18,6 +18,7 @@ const routes =
             { name: 'documentation_login', path: 'login', component: () => import('pages/Documentation/Login.vue') },
             { name: 'documentation_registration', path: 'registration', component: () => import('pages/Documentation/Registration.vue') },
             { name: 'documentation_guide', path: 'guide', component: () => import('pages/Guide/CodingStandards.vue') },
+            { name: 'documentation_forgotpassword', path: 'ForgotPassword', component: () => import('pages/Documentation/ForgotPassword.vue') },
         ]
     },
     // Always leave this as last one,

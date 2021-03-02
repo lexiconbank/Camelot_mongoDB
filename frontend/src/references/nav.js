@@ -15,6 +15,7 @@ module.exports =
             { label: 'Login', route: 'documentation_login' },
             { label: 'Registration', route: 'documentation_registration' },
             { label: 'Web3', route: 'documentation_web3' },
+            { label: 'Forgot Password', route: 'documentation_forgotpassword' },
         ]
     },
     {
