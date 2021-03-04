@@ -58,7 +58,7 @@ export default
             email: '',
             password: '',
             user_name: 'snake_snake',
-            gender_options:'',
+            gender_options: [],
             is_empty: '',
 
         },

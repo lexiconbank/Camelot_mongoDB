@@ -79,4 +79,20 @@ module.exports = class MODEL
             return error;
         }
     }
+
+
+    async delete(_id)
+    {
+        try 
+        {
+            const collection     = this.collection;
+            const res            = await collection.findOneAndDelete(_id);
+            return res;
+        } 
+        catch (error) 
+        {
+            console.log(error);
+            return error;
+        }        
+    }
 }

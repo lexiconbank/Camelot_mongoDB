@@ -18,6 +18,7 @@ const routes =
             { name: 'documentation_login', path: 'login', component: () => import('pages/Documentation/Login.vue') },
             { name: 'documentation_registration', path: 'registration', component: () => import('pages/Documentation/Registration.vue') },
             { name: 'documentation_guide', path: 'guide', component: () => import('pages/Guide/CodingStandards.vue') },
+            { name: 'documentation_nobilities', path: 'nobilities', component: () => import('pages/Documentation/Member/Nobilities.vue') },
         ]
     },
     // Always leave this as last one,

@@ -1,14 +1,16 @@
 const MDB_USER = require('../models/MDB_USER');
+const referral_code     = require('referral-codes');
+const one_time_passcode = require('referral-codes');
 
 module.exports = class AccountClass
 {
     constructor(user_information)
-    {
-        this.mdb_user = new MDB_USER();
+    {   
         this.user_information = user_information;
+        this.mdb_user         = new MDB_USER();
     }
 
-    async validate()
+    async validateRegistration()
     { 
         let res = {};
         if(this.user_information.full_name.trim() == '' || this.user_information.password.trim() == '' || this.user_information.email.trim() == '')
@@ -23,10 +25,48 @@ module.exports = class AccountClass
         }
         else
         {
-            res.status = "success";
+            return res = await this.registerUser()
+        }
+    }
+
+    async registerUser()
+    {
+        let res = {};
+        try
+        {
+            res.status               = "success";
+            let referral_code        = await this.generateReferralCode();
+            this.user_information.personal_referral_code = referral_code[0];
+            console.log(await this.generateOTP());
+            let is_email_exist      = await this.mdb_user.findByEmail(this.user_information.email);
+            res.data                = is_email_exist ? 'exist' : await this.mdb_user.add(this.user_information);
+        }
+        catch (error)
+        {
+            res.status  = "error";
+            res.message = error.message;
         }
 
         return res;
+    }
+
+    async generateReferralCode()
+    {
+        let code = referral_code.generate({
+            length: 5,
+            prefix: "camelot",
+        });
+
+        return code
+    }
+    
+    async generateOTP()
+    {
+        let otp = one_time_passcode.generate({
+            length: 6,
+        });
+
+        return otp;
     }
 
     async authenticate()
@@ -48,7 +88,7 @@ module.exports = class AccountClass
             }
             else
             {
-                res.status = "error",
+                res.status  = "error",
                 res.message = "Invalid Credentials";
             }
         }
@@ -61,30 +101,6 @@ module.exports = class AccountClass
         return res;
     }
 
-    async create()
-    {
-        let res = {};
-        try
-        {
-            res.status = "success";
-
-            let add_form =
-            { 
-                full_name: this.user_information.full_name,
-                email: this.user_information.email,
-                password: this.user_information.password
-            }
-
-            await this.mdb_user.add(add_form);
-        }
-        catch (error)
-        {
-            res.status = "error";
-            res.message = error.message;
-        }
-
-        return res;
-    }
 }
 
 

@@ -32,7 +32,7 @@ module.exports =
         icon: 'fa fa-home',
         sub:
         [
-            
+            { label: 'Nobilities', route: 'documentation_nobilities' },
         ]
     },
     {

@@ -24,6 +24,7 @@ try {
     else
     {
         connection_url = `mongodb+srv://${connection_info.DB_USER}:${connection_info.DB_PASS}@${connection_info.DB_HOST}/${connection_info.DB_NAME}?retryWrites=true&w=majority`;
+        // mongodb+srv://bitcapp:Whatsnew2021@cluster0.plwrn.mongodb.net/camelot?retryWrites=true&w=majority
     }
     
     const connection = MONGOOSE.createConnection(connection_url, {
