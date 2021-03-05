@@ -2,7 +2,6 @@
 
 
 //url from google fonts
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
 
 html, body {
@@ -11,4 +10,72 @@ html, body {
 
 #app {
     font-family: 'Poppins', sans-serif;
+}
+
+h1{
+    font-size: 42px;
+    line-height: 100%;
+    margin: 0%;
+}
+
+h6{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 100%;
+    margin: 0%;
+}
+
+h5{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 100%;
+    margin: 0%;
+}
+
+h4{
+    font-size: 30px;
+    line-height: 100%;
+    margin: 0%;
+}
+p{
+    margin: 0%;
+}
+
+.bg__ground{
+    background-color: $light;
+}
+
+.material-icons{
+    vertical-align: middle;
+}
+
+// qcard transition
+.home__qcard{
+    border-radius: 10px;
+    transition: all .2s linear;
+    box-shadow: 2px 2px 5px 0px #bbbb;
+}
+
+.home__qcard:hover{
+    border-radius: 0;
+    box-shadow: none;
+    transform: translate(2px, 2px);
+}
+
+
+
+/* transition */
+.expand-transition {
+transition: all .3s ease;
+height: 30px;
+padding: 10px;
+background-color: #eee;
+overflow: hidden;
+}
+/* .expand-enter defines the starting state for entering */
+/* .expand-leave defines the ending state for leaving */
+.expand-enter, .expand-leave {
+height: 0;
+padding: 0 10px;
+opacity: 0;
 }

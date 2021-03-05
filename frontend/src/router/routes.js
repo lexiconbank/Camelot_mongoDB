@@ -5,8 +5,8 @@ const routes =
         component: () => import('layouts/FrontLayout.vue'),
         children:
         [
-            // { name: 'front_dashboard', path: '', component: () => import('pages/Front/Dashboard.vue') },
-            // { name: 'front_login', path: 'landing', component: () => import('pages/Front/Login.vue') },
+            { name: 'front_landing', path: '', component: () => import('pages/Front/Landing.vue') },
+            { name: 'front_register', path: 'register', component: () => import('pages/Front/Register.vue') },
         ]
     },
     {
@@ -19,6 +19,16 @@ const routes =
             { name: 'documentation_registration', path: 'registration', component: () => import('pages/Documentation/Registration.vue') },
             { name: 'documentation_guide', path: 'guide', component: () => import('pages/Guide/CodingStandards.vue') },
             { name: 'documentation_forgotpassword', path: 'ForgotPassword', component: () => import('pages/Documentation/ForgotPassword.vue') },
+        ]
+    },
+    {
+        path: '/member',
+        component: () => import('layouts/HomeLayout.vue'),
+        children:
+        [
+            { name: 'member_home', path: '', component: () => import('pages/Front/Home.vue') },
+            // { name: 'documentation_login', path: 'login', component: () => import('pages/Documentation/Login.vue') },
+            // { name: 'documentation_registration', path: 'registration', component: () => import('pages/Documentation/Registration.vue') },
         ]
     },
     // Always leave this as last one,

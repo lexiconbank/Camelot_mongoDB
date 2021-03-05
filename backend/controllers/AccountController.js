@@ -8,7 +8,6 @@ module.exports =
         let password        = req.body.password;
 
         let authenticate    = await new AccountClass({email:email, password:password}).authenticate();
-        
         if(authenticate.status == "success")
         {
             res.send(true);
@@ -25,22 +24,29 @@ module.exports =
         {
             full_name: req.body.full_name,
             email: req.body.email,
+            contact_number: req.body.contact_number,
             password: req.body.password,
-            confirm_password: req.body.confirm_password
+            country: req.body.country,
+            referral_code: req.body.referral_code,
+
         }
 
         let account_class = new AccountClass(user_information);
-
         let account_validation = await account_class.validate();
 
         if(account_validation.status == "success")
         {
-            await account_class.create();
+            let registration_create =await account_class.create();
+
+            if (registration_create.status == "error") {
+                res.status(400).send({ message: account_validation.message })
+            } else if (registration_create.status == "success") {
+                res.json(registration_create.data).status(200);
+            }
         }
-        else if(account_validation.status == "error")
+        else if(account_validation.status == "error")   
         {
             res.status(400).send({ message: account_validation.message });
         }
-        res.send(true);
     },
 }
