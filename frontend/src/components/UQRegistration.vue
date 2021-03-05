@@ -33,7 +33,7 @@
                     ]">
                         <template v-slot:append>
                             <q-icon
-                                :name="isPwd ? 'visibility_off' : 'visibility'"
+                                :name="isPwd ? 'visibility' : 'visibility_off'"
                                 class="cursor-pointer"
                                 @click="isPwd = !isPwd"
                             />
@@ -136,7 +136,8 @@ export default
 </script>
 
 <style scoped>
-    .my__hover:hover{
+    .my__hover:hover
+    {
         text-decoration: none ;
     }
 </style>

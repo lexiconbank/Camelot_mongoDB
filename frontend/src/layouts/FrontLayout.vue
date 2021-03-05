@@ -10,9 +10,9 @@
           />
         </div>
         <div class="max__width">
-          <h6>When You’re Good at Building your Bussiness or Marketing Career or Both...</h6>
-          <h1>You’ll be blessed in the  long term</h1>
-          <a  href="" tabindex="0" class="my__hover q-btn inline q-btn-item non-selectable q-btn--flat q-btn--rectangle text-black q-focusable q-hoverable q-btn--no-uppercase">
+          <h6 class="q-mt-xl">When You’re Good at Building your Bussiness or Marketing Career or Both...</h6>
+          <h1 class="q-mt-lg">You’ll be blessed in the  long term</h1>
+          <a  href="" tabindex="0" class="q-mt-xl my__hover q-btn inline q-btn-item non-selectable q-btn--flat q-btn--rectangle text-black q-focusable q-hoverable q-btn--no-uppercase">
             <h6><span class="material-icons">keyboard_arrow_right</span>Wait... There’s More!</h6>
           </a>
         </div>
@@ -85,6 +85,7 @@ export default
       padding-right: 50px;
     }
   }
+  
   @media screen and (max-width: 599px) {
     .row{
       padding-left: 0;
