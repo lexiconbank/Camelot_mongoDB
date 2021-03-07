@@ -34,7 +34,7 @@
                         fill-input
                         input-debounce="0"
                         :options="country_options"
-                        :option-label="country_name"
+                        :option-label="countryNameEn"
                         @filter="filterFn"
                         @input-value="setModel"
                     >
@@ -145,9 +145,10 @@
                     </label>
                 </div>
                 <div class="q-mt-sm"><q-btn type="submit" color="primary" unelevated class="full-width">Create Account</q-btn></div>
-                <div class="q-mt-xs"><q-btn type="button" color="primary"  outline class="full-width">Back</q-btn></div>
+                <div class="q-mt-xs"><q-btn type="button" color="primary" outline class="full-width">Back</q-btn></div>
 	   		</q-form>
 	    </div>
+        <u-q-otp :propmt="prompt"/>
     </div>
 </template>
 
@@ -159,6 +160,11 @@ const stringOptions = (country_code_list.all('all')).filter(v => v.countryNameEn
 
 export default
 {
+    components : {
+    'u-q-otp' : require( './Modal/UQOtp.vue').default
+    },
+
+    props: ['prompt'],
     data:() =>(
     {
         form_data:
@@ -216,10 +222,11 @@ export default
 
         setModel (val) 
         {
-            this.form_data.country = val;
-            this.form_data.currency = this.form_data.country.currencyCode;
+            this.form_data.country      = val;
+            this.form_data.country_string      = this.form_data.country.countryNameEn;
+            this.form_data.currency     = this.form_data.country.currencyCode;
             this.form_data.contact_code = '+' + this.form_data.country.countryCallingCode;
-            this.country_name = this.form_data.country.countryNameEn;
+            this.country_name           = this.form_data.country.countryNameEn;
         }
     }
 }
